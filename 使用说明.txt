@@ -1,0 +1,38 @@
+🎵 音乐播放器 - EdgeOne托管版使用说明
+
+🌐 EdgeOne部署后添加新歌曲的方法：
+
+📋 准备工作：
+1. 将新音乐文件放入本地 music 文件夹
+2. 运行命令：node generate-playlist.js
+3. 这会更新 music-files.js 文件
+
+☁️ 上传到EdgeOne：
+方法一：EdgeOne控制台上传
+1. 登录EdgeOne控制台
+2. 进入文件管理
+3. 上传新音乐文件到 music/ 目录
+4. 上传更新的 music-files.js 文件
+
+方法二：FTP上传
+1. 使用FTP工具连接EdgeOne
+2. 上传新音乐文件和 music-files.js
+
+🧹 清理缓存：
+1. 在EdgeOne控制台选择"缓存刷新"
+2. 刷新以下URL：
+   - /music-files.js
+   - /get-music-files.php
+   - /music/
+
+💡 小贴士：
+- 支持格式：MP3、FLAC、WAV、OGG、M4A、AAC
+- 文件名格式：歌曲名-艺术家#编号.扩展名
+- 播放器会自动解析歌曲信息
+
+🎮 快捷键：
+- 空格键：播放/暂停
+- 左箭头：上一首
+- 右箭头：下一首
+
+📖 详细部署说明请查看：EdgeOne部署指南.md

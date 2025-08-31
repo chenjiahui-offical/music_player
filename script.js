@@ -37,19 +37,43 @@ class MusicPlayer {
 
     async loadSongs() {
         try {
-            // 尝试从服务器获取音乐文件列表
+            // 方法1: 尝试从PHP脚本获取音乐文件列表
             const response = await fetch('./get-music-files.php');
             if (response.ok) {
                 const musicFiles = await response.json();
+                console.log('✅ 从服务器动态加载音乐文件列表');
                 this.processMusicFiles(musicFiles);
-            } else {
-                throw new Error('无法从服务器获取文件列表');
+                return;
             }
         } catch (error) {
-            console.log('无法从服务器获取文件列表，使用预设列表');
-            // 如果无法从服务器获取，使用预设的文件列表
-            this.loadPresetSongs();
+            console.log('📡 无法从PHP服务器获取文件列表');
         }
+
+        try {
+            // 方法2: 尝试加载生成的JavaScript文件列表
+            const response = await fetch('./music-files.js');
+            if (response.ok) {
+                const jsContent = await response.text();
+                // 执行JavaScript代码来获取MUSIC_FILES变量
+                const script = document.createElement('script');
+                script.textContent = jsContent;
+                document.head.appendChild(script);
+                
+                if (typeof MUSIC_FILES !== 'undefined') {
+                    console.log('✅ 从生成的文件列表加载音乐');
+                    this.processMusicFiles(MUSIC_FILES);
+                    document.head.removeChild(script);
+                    return;
+                }
+                document.head.removeChild(script);
+            }
+        } catch (error) {
+            console.log('📄 无法加载生成的文件列表');
+        }
+
+        // 方法3: 使用预设列表作为后备方案
+        console.log('🔄 使用预设音乐列表');
+        this.loadPresetSongs();
     }
 
     loadPresetSongs() {
