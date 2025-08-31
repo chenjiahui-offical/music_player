@@ -1,4 +1,4 @@
-// 自动生成的音乐文件列表 - 2025/8/31 20:01:36
+// 自动生成的音乐文件列表 - 2025/8/31 20:23:18
 const MUSIC_FILES = [
     "A Little Love-冯曦妤#ahAt.mp3",
     "Lemon-米津玄師#ghxLh.mp3",
@@ -6,7 +6,6 @@ const MUSIC_FILES = [
     "一生所爱-卢冠廷.莫文蔚#f0uzM.mp3",
     "七月上-Jam#2nQHq8.mp3",
     "三寸天堂-.步步惊心.电视剧片尾曲-严艺丹#1znKD.mp3",
-    "下一个天亮-郭静#gj2YI.flac",
     "不再犹豫-Beyond#97BQ.mp3",
     "不再联系-程响#f55f8.mp3",
     "不怕-苏星婕#2uhHFZ.mp3",
