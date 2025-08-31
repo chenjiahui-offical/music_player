@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音乐播放器</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="music-player">
+        <div class="header">
+            <h1>🎵 我的音乐播放器</h1>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="搜索歌曲..." />
+                <button id="searchBtn">🔍</button>
+            </div>
+            <div class="file-input-container">
+                <input type="file" id="musicFileInput" multiple accept="audio/*" />
+                <label for="musicFileInput" class="file-input-label">📁 选择音乐文件</label>
+                <span class="file-input-hint">支持批量选择音频文件</span>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="player-section">
+                <div class="current-song">
+                    <div class="song-info">
+                        <h3 id="currentTitle">请选择一首歌曲</h3>
+                        <p id="currentArtist">未知艺术家</p>
+                    </div>
+                </div>
+
+                <div class="progress-container">
+                    <span id="currentTime">00:00</span>
+                    <div class="progress-bar">
+                        <div class="progress" id="progress"></div>
+                        <div class="progress-handle" id="progressHandle"></div>
+                    </div>
+                    <span id="duration">00:00</span>
+                </div>
+
+                <div class="controls">
+                    <button id="prevBtn" title="上一首">⏮️</button>
+                    <button id="playBtn" title="播放/暂停">▶️</button>
+                    <button id="nextBtn" title="下一首">⏭️</button>
+                    <button id="shuffleBtn" title="随机播放" class="mode-btn">🔀</button>
+                    <button id="repeatBtn" title="循环模式" class="mode-btn">🔁</button>
+                </div>
+
+                <div class="volume-container">
+                    <span>🔊</span>
+                    <input type="range" id="volumeSlider" min="0" max="100" value="50">
+                </div>
+            </div>
+
+            <div class="playlist-section">
+                <div class="playlist-header">
+                    <h3>播放列表 (<span id="songCount">0</span>首)</h3>
+                    <div class="playlist-controls">
+                        <button id="clearSearch">显示全部</button>
+                    </div>
+                </div>
+                <div class="playlist" id="playlist">
+                    <!-- 歌曲列表将在这里动态生成 -->
+                </div>
+            </div>
+        </div>
+
+        <audio id="audioPlayer" preload="metadata"></audio>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
